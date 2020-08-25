@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 {
     public Slider slider;
     public TMP_Text timerText;
+    public TMP_Text lastSecText;
+    public GameObject countDownHolder;
 
     float startingTime = 60f;
     float currentTime = 0f;
@@ -16,14 +18,15 @@ public class Timer : MonoBehaviour
     {
         slider.maxValue = startingTime;
         currentTime = startingTime;
+        countDownHolder.SetActive(false);
     }
 
     void Update()
     {
-        CountDown();
+        countDown();
     }
 
-    void CountDown()
+    void countDown()
     {
         currentTime -= 1 * Time.deltaTime;
         timerText.text = currentTime.ToString("0");
@@ -33,5 +36,12 @@ public class Timer : MonoBehaviour
         {
             currentTime = 0;
         }
+
+        if(currentTime <= 10)
+        {
+            lastSecText.text = currentTime.ToString("0");
+            countDownHolder.SetActive(true);
+        }
     }
+
 }
