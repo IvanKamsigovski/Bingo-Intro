@@ -18,6 +18,7 @@ public class SetText : MonoBehaviour
 
     public bool setBoll;
 
+
     private void Awake()
     {
         textList.Add(topText);
@@ -42,11 +43,7 @@ public class SetText : MonoBehaviour
         {
             textList[i] = textInput[i].text;
         }
-        SceneManager.LoadScene(1);
+       // SceneManager.LoadScene(1);
     }
 
-    public void changeScene()
-    {
-        SceneManager.LoadScene(1);
-    }
 }
