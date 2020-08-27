@@ -11,26 +11,28 @@ public class Timer : MonoBehaviour
     public TMP_Text timerText;
     public TMP_Text lastSecText;
     public GameObject countDownHolder;
-    public GameObject timerBackground;
+    public GameObject timerAnimation;
+    public GameObject endCanvas;
     public PlayableDirector playableDirector;
 
     float startingTime = 60f;
     float currentTime = 0f;
     bool countdownActivator;
+    bool endCnavasBool;
 
     void Start()
     {
         slider.maxValue = startingTime;
         currentTime = startingTime;
         countdownActivator = false;
-        //countDownHolder.SetActive(countdownActivator);
+        endCnavasBool = false;
     }
 
     void Update()
     {
         countDown();
         countDownHolder.SetActive(countdownActivator);
-        timerBackground.SetActive(countdownActivator);
+        endCanvas.SetActive(endCnavasBool);
     }
 
     void countDown()
@@ -44,7 +46,6 @@ public class Timer : MonoBehaviour
         {
             lastSecText.text = currentTime.ToString("0");
             countdownActivator = true;
-            //countDownHolder.SetActive(true);
             playableDirector.Play();
         }
         if(currentTime <= 0)
@@ -52,8 +53,16 @@ public class Timer : MonoBehaviour
             currentTime = 0;
             playableDirector.Stop();
             countdownActivator = false;
-            //countDownHolder.SetActive(false);
+            timerAnimation.SetActive(false);
+            endCnavasBool = true;
         }
+
+       /* if(currentTime < 0)
+        {
+            endCnavasBool = true;
+        }*/
     }
+
+
 
 }
