@@ -43,7 +43,6 @@ public class SetText : MonoBehaviour
         {
             textList[i] = textInput[i].text;
         }
-       // SceneManager.LoadScene(1);
     }
 
 }

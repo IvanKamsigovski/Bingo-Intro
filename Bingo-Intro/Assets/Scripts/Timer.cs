@@ -57,10 +57,6 @@ public class Timer : MonoBehaviour
             endCnavasBool = true;
         }
 
-       /* if(currentTime < 0)
-        {
-            endCnavasBool = true;
-        }*/
     }
 
 
